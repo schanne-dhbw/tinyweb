@@ -6,36 +6,44 @@ import com.mblinn.oo.tinyweb.View;
 
 import java.util.*;
 
-public class GreetingController extends TemplateController {
-    private Random random;
+public class GreetingController extends TemplateController
+{
+  private Random random;
 
-    public GreetingController(View view) {
-        super(view);
-        random = new Random();
-    }
+  public GreetingController(View view)
+  {
+    super(view);
+    random = new Random();
+  }
 
-    @Override
-    public Map<String, List<String>> doRequest(HttpRequest httpRequest) {
-        Map<String, List<String>> helloModel =
-                new HashMap<>();
-        helloModel.put("greetings",
-                generateGreetings(httpRequest.getBody()));
-        return helloModel;
-    }
+  @Override
+  public Map<String, List<String>> doRequest(HttpRequest httpRequest)
+  {
+    Map<String, List<String>> helloModel
+            = new HashMap<>();
+    helloModel.put("greetings",
+            generateGreetings(httpRequest.getBody()));
+    return helloModel;
+  }
 
-    private List<String> generateGreetings(String namesCommaSeparated) {
-        String[] names = namesCommaSeparated.split(",");
-        List<String> greetings = new ArrayList<>();
-        for (String name : names) {
-            greetings.add(makeGreeting(name));
-        }
-        return greetings;
+  private List<String> generateGreetings(String namesCommaSeparated)
+  {
+    String[] names = namesCommaSeparated.split(",");
+    List<String> greetings = new ArrayList<>();
+    for (String name : names)
+    {
+      greetings.add(makeGreeting(name));
     }
+    return greetings;
+  }
 
-    private String makeGreeting(String name) {
-        String[] greetings =
-                {"Hello", "Greetings", "Salutations", "Hola"};
-        String greetingPrefix = greetings[random.nextInt(4)];
-        return String.format("%s, %s", greetingPrefix, name);
-    }
+  private String makeGreeting(String name)
+  {
+    String[] greetings =
+    {
+      "Hello", "Greetings", "Salutations", "Hola"
+    };
+    String greetingPrefix = greetings[random.nextInt(4)];
+    return String.format("%s, %s", greetingPrefix, name);
+  }
 }

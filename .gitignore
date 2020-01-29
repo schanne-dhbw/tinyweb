@@ -139,3 +139,7 @@ Session.vim
 *~
 
 arch
+server/log/access_log
+server/log/agent_log
+server/log/error_log
+server/log/referer_log
