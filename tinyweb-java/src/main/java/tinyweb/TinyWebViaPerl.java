@@ -100,9 +100,9 @@ public class TinyWebViaPerl
           controllers.put(urlControllerView[0].trim(), controller);
         }
       }
-      else if (args[idx].startsWith("#"))
+      else if (args[idx].startsWith("***"))
       {
-        builder.body(args[idx].substring(1));
+        builder.body(args[idx].substring(3));
       }
       else
       {

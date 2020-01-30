@@ -15,7 +15,7 @@ public class TinyWebViaPerlTest
     String[] args = new String[] { "/greet&/greet@com.mblinn.oo.tinyweb.example.GreetingController@" +
                                    "com.mblinn.oo.tinyweb.example.GreetingView&" + 
                                    "com.mblinn.oo.tinyweb.example.LoggingFilter&" +
-                                   "arg=value&#Marc,Test" };
+                                   "arg=value&***Marc,Test" };
     TinyWebViaPerl.main(args);
   }
 }
