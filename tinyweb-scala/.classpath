@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="project"/>
 	<classpathentry kind="src" path="src/main/scala"/>
 	<classpathentry kind="src" path="src/test/scala"/>
+	<classpathentry exported="true" kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/jansi-1.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/jline-2.14.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/scala-compiler.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/scala-library.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/scalap-2.13.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/scala-2.13.1/lib/scala-reflect.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="D:/scala/sbt/lib/local-preloaded"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

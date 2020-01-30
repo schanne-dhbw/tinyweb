@@ -1,3 +1,4 @@
+/*
 def handleGreetingRequest(request: HttpRequest) =
   Map("greetings" -> request.body.split(",").toList.map(makeGreeting))
 
@@ -9,3 +10,4 @@ private def makeGreeting(name: String) =
   "%s, %s".format(greetings(random.nextInt(greetings.size)), name)
 
 def greetingController = new FunctionController(greetingView, handleGreetingRequest)
+*/
