@@ -5,3 +5,13 @@ Required binaries:
 - Scala: scala-2.13.1.msi
 - TinyWeb server: tinyweb-1-94.zip
 
+cgi-bin:
+
+- *.pl mit perl.exe verbinden
+- javac java_example\Hello.java
+- scalac scala_example\hello.scala
+- cd clojure_example
+- lein compile
+- lein jar
+- lein install
+
