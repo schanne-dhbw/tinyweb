@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TinyWebViaPerl
 {
@@ -21,9 +19,12 @@ public class TinyWebViaPerl
   {
     try
     {
-      Class clazz = Class.forName(className);
-      Object obj = clazz.newInstance();
-      if (obj instanceof View) return (View) obj;
+      if (className != null && !className.isEmpty())
+      {
+        Class clazz = Class.forName(className);
+        Object obj = clazz.newInstance();
+        if (obj instanceof View) return (View) obj;
+      }
     } 
     catch (Exception ex)
     {
@@ -35,10 +36,13 @@ public class TinyWebViaPerl
   {
     try
     {
-      Class clazz = Class.forName(className);
-      Constructor constr = clazz.getConstructor(new Class[] { View.class });
-      Object obj = constr.newInstance(new Object[] { injectedView });
-      if (obj instanceof TemplateController) return (TemplateController) obj;
+      if (className != null && !className.isEmpty())
+      {
+        Class clazz = Class.forName(className);
+        Constructor constr = clazz.getConstructor(new Class[] { View.class });
+        Object obj = constr.newInstance(new Object[] { injectedView });
+        if (obj instanceof TemplateController) return (TemplateController) obj;
+      }
     } 
     catch (Exception ex)
     {
@@ -50,9 +54,12 @@ public class TinyWebViaPerl
   {
     try
     {
-      Class clazz = Class.forName(className);
-      Object obj = clazz.newInstance();
-      if (obj instanceof Filter) return (Filter) obj;
+      if (className != null && !className.isEmpty())
+      {
+        Class clazz = Class.forName(className);
+        Object obj = clazz.newInstance();
+        if (obj instanceof Filter) return (Filter) obj;
+      }
     } 
     catch (Exception ex)
     {
@@ -63,7 +70,10 @@ public class TinyWebViaPerl
   public static void main(String[] args)
   {
     HttpRequest.Builder builder = HttpRequest.Builder.newBuilder();
-    builder = builder.path(args[0]);
+    if (args.length > 0 && !args[0].isEmpty())
+    {
+      builder = builder.path(args[0]);
+    }
     Map<String, Controller> controllers = new HashMap<>();
     List<Filter> filters = new ArrayList<>();
     for (int idx = 1; idx < args.length; idx++)
@@ -95,6 +105,10 @@ public class TinyWebViaPerl
     HttpRequest req = builder.build();
     TinyWeb web = new TinyWeb(controllers, filters);
     HttpResponse res = web.handleRequest(req);
-    System.out.println(res.getBody());
+    if (res != null)
+    {
+      System.out.println(res.getBody());
+    }
+    System.out.println("Error page!");
   }
 }
