@@ -70,7 +70,11 @@ public class TinyWebViaPerl
   public static void main(String[] args)
   {
     HttpRequest.Builder builder = HttpRequest.Builder.newBuilder();
-    if (args.length > 0 && !args[0].isEmpty())
+    if (args.length == 1 && args[0].contains("&"))
+    {
+      args = args[0].split("&");
+    }
+    if (args.length > 1 && !args[0].isEmpty())
     {
       builder = builder.path(args[0]);
     }
@@ -96,6 +100,10 @@ public class TinyWebViaPerl
           controllers.put(urlControllerView[0].trim(), controller);
         }
       }
+      else if (args[idx].startsWith("#"))
+      {
+        builder.body(args[idx].substring(1));
+      }
       else
       {
         String filter = args[idx].trim();
@@ -109,6 +117,9 @@ public class TinyWebViaPerl
     {
       System.out.println(res.getBody());
     }
-    System.out.println("Error page!");
+    else
+    {
+      System.out.println("Error page!");
+    }
   }
 }

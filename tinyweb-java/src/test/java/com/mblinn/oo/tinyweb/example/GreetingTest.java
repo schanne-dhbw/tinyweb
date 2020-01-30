@@ -1,6 +1,11 @@
 package com.mblinn.oo.tinyweb.example;
 
-import com.mblinn.oo.tinyweb.*;
+import com.mblinn.oo.tinyweb.Controller;
+import com.mblinn.oo.tinyweb.Filter;
+import com.mblinn.oo.tinyweb.HttpRequest;
+import com.mblinn.oo.tinyweb.HttpResponse;
+import com.mblinn.oo.tinyweb.StrategyView;
+import com.mblinn.oo.tinyweb.TinyWeb;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
