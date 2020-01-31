@@ -3,10 +3,9 @@ package com.mblinn.oo.tinyweb.example
 
 import com.mblinn.oo.tinyweb.{HttpRequest, HttpResponse}
 import org.scalacheck.Prop.BooleanOperators
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import org.scalatest.{ShouldMatchers, Matchers, PropSpec}
+import org.scalatest.matchers.should.Matchers
 
-class GreetingSpec extends PropSpec with GeneratorDrivenPropertyChecks with Matchers with ShouldMatchers {
+class GreetingSpec extends PropSpec with GeneratorDrivenPropertyChecks with Matchers {
 
 
   property("a greeting response should contains the names given in the input") {
