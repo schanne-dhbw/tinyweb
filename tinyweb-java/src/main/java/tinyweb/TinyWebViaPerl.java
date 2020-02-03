@@ -82,6 +82,7 @@ public class TinyWebViaPerl
     List<Filter> filters = new ArrayList<>();
     for (int idx = 1; idx < args.length; idx++)
     {
+	  // header (name=value)
       if (args[idx].contains("="))
       {
         String[] nameValue = args[idx].split("=");
@@ -90,6 +91,7 @@ public class TinyWebViaPerl
           builder = builder.addHeader(nameValue[0].trim(), nameValue[1].trim());
         }
       }
+	  // url@controller@view
       else if (args[idx].contains("@"))
       {
         String[] urlControllerView = args[idx].split("@");
@@ -100,10 +102,12 @@ public class TinyWebViaPerl
           controllers.put(urlControllerView[0].trim(), controller);
         }
       }
+	  // ***body
       else if (args[idx].startsWith("***"))
       {
         builder.body(args[idx].substring(3));
       }
+	  // filter
       else
       {
         String filter = args[idx].trim();
