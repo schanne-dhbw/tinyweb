@@ -6,10 +6,12 @@ import java.util.Random
 
 object Example
 {
-  def greetingViewRenderer(model: Map[String, List[String]]): String =
-  {
-    return "<h1>Friendly Greetings:</h1>%s".format(model.getOrElse("greetings", List("n/a")).map(renderGreeting).mkString(""))
-  }
+  def greetingViewRenderer(model: Map[String, List[String]]) =
+    "<h1>Friendly Greetings:</h1>%s".format(
+      model
+      getOrElse("/greetings", List[String]())
+      map(renderGreeting)
+      mkString(""))
 
   private def renderGreeting(greeting: String): String =
   {
@@ -20,7 +22,7 @@ object Example
 
   def handleGreetingRequest(request: HttpRequest): Map[String, List[String]] =
   {
-    return Map("greetings" -> request.body.split(",").toList.map(makeGreeting))
+    return Map("/greetings" -> request.body.split(",").toList.map(makeGreeting))
   }
 
   private def random = new Random()
@@ -49,12 +51,14 @@ object Example
     def tinyweb = new TinyWeb(
       Map("/greeting" -> Example.greetingController),
       List(Example.loggingFilter))
-  
+    
     def testHttpRequest = HttpRequest(
       Map("name" -> "value"),
       body="Mike,Joe,John,Steve",
       path="/greeting")
     
-    println(tinyweb.handleRequest(testHttpRequest).body)
+    val optionalResponse = tinyweb.handleRequest(testHttpRequest)
+    
+    println(optionalResponse map {_.body} getOrElse "n/a")
   }
 }

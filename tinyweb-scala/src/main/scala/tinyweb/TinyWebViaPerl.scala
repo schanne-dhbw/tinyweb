@@ -10,19 +10,20 @@ object TinyWebViaPerl
   {
     if (args.length == 0) println("No args ...")
     val argList =
-      if (args.length == 1 && args(0).contains("&"))
+      if (args.length == 1 && args(0).contains("/"))
       {
-        args(0).split("&").map(_.trim).toList
+        args(0).split("/").map(_.trim).toList
       }
       else
       {
         args.toList
-      };
+      }
     var path = ""
     var body = ""
     var header = Map[String, String]()
     if (argList.size > 1 && !argList(0).isEmpty())
     {
+      // path
       path = argList(0)
     }
     for (arg <- argList.drop(1)) 
@@ -39,11 +40,13 @@ object TinyWebViaPerl
       }
     }
     def tinyweb = new TinyWeb(
-      Map("/greeting" -> new FunctionController(Example.greetingView, Example.handleGreetingRequest)),
-      List(Example.loggingFilter))
-  
+      Map("greeting" -> new FunctionController(Example.greetingView, Example.handleGreetingRequest)),
+      List(Example.loggingFilter)
+    )
     def testHttpRequest = HttpRequest(header, body, path)
+
+    val optionalResponse = tinyweb.handleRequest(testHttpRequest)
     
-    println(tinyweb.handleRequest(testHttpRequest).body)
+    println(optionalResponse map {_.body} getOrElse "n/a")
   }
 }
