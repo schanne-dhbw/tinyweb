@@ -2,6 +2,7 @@
   (let [greetings ["Hello" "Greetings" "Salutations" "Hola"]
         greeting-count (count greetings)]
     (str (greetings (rand-int greeting-count)) ", " name)))
+
 (defn handle-greeting [http-request]
   {:greetings (map make-greeting (str/split (:body http-request) #","))})
 

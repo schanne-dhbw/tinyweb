@@ -1,3 +1,5 @@
 ﻿/arch
 *.class
 /target/
+tinyweb-java/target
+*.cache-main
