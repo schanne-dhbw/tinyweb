@@ -15,5 +15,6 @@ com\mblinn\oo\tinyweb\example\LoggingFilter.class
 com\mblinn\oo\tinyweb\example\GreetingView.class
 com\mblinn\oo\tinyweb\HttpRequest$Builder.class
 tinyweb\App.class
+com\mblinn\oo\tinyweb\example\ExampleHarness.class
 com\mblinn\oo\tinyweb\example\GreetingController.class
 com\mblinn\oo\tinyweb\TemplateController.class

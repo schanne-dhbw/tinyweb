@@ -6,82 +6,85 @@ import java.util.Map;
 
 public class HttpRequest
 {
-  private final String path;
-  private final String body;
-  private final Map<String, String> headers;
+    private final String path;
+    private final String body;
+    private final Map<String, String> headers;
 
-  public HttpRequest(Builder builder)
-  {
-    this.path = builder.path;
-    this.body = builder.body;
-    this.headers = builder.headers;
-  }
-
-  public String getPath()
-  {
-    return path;
-  }
-
-  public String getBody()
-  {
-    return body;
-  }
-
-  public Map<String, String> getHeaders()
-  {
-    return Collections.unmodifiableMap(headers);
-  }
-
-  public static class Builder
-  {
-    private Map<String, String> headers;
-    private String path;
-    private String body;
-
-    public Builder()
+    public Map<String, String> getHeaders()
     {
-      this.headers = new HashMap<>();
+        return headers;
     }
 
-    public Builder path(String path)
+    public String getBody()
     {
-      this.path = path;
-      return this;
+        return body;
     }
 
-    public Builder body(String body)
+    public String getPath()
     {
-      this.body = body;
-      return this;
+        return path;
     }
 
-    public HttpRequest build()
+    private HttpRequest(Builder builder)
     {
-      return new HttpRequest(this);
+        this.headers = Collections.unmodifiableMap(builder.headers);
+        this.body = builder.body;
+        this.path = builder.path;
     }
 
-    public static Builder newBuilder()
+    public static class Builder
     {
-      return new Builder();
-    }
+        private Map<String, String> headers;
+        private String body;
+        private String path;
 
-    public Builder addHeader(String headerName, String headerValue)
-    {
-      headers.put(headerName, headerValue);
-      return this;
-    }
-  }
+        private Builder()
+        {
+            headers = new HashMap<String, String>();
+        }
 
-  public static Builder builderFrom(HttpRequest request)
-  {
-    Builder builder = new Builder();
-    builder.path(request.getPath());
-    builder.body(request.getBody());
-    Map<String, String> headers = request.getHeaders();
-    for (String headerName : headers.keySet())
-    {
-      builder.addHeader(headerName, headers.get(headerName));
+        public Builder addHeader(String name, String value)
+        {
+            headers.put(name, value);
+            return this;
+        }
+
+        public Builder body(String body)
+        {
+            this.body = body;
+            return this;
+        }
+
+        public Builder path(String path)
+        {
+            this.path = path;
+            return this;
+        }
+
+        public HttpRequest build()
+        {
+            return new HttpRequest(this);
+        }
+
+        public static Builder newBuilder()
+        {
+            return new Builder();
+        }
+
+        public static Builder builderFrom(HttpRequest request)
+        {
+            Builder builder = new Builder();
+            builder.path(request.getPath());
+            builder.body(request.getBody());
+
+            Map<String, String> headers = request.getHeaders();
+            for (String headerName : headers.keySet())
+            {
+                builder.addHeader(headerName,
+                        headers.get(headerName));
+            }
+
+            return builder;
+        }
     }
-    return builder;
-  }
 }

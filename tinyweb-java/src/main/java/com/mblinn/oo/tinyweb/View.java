@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface View
 {
-  public String render(Map<String, List<String>> model);
+    public String render(Map<String, List<String>> model);
 }

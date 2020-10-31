@@ -5,22 +5,23 @@ import java.util.Map;
 
 public class StrategyView implements View
 {
-  private RenderingStrategy viewRenderer;
+    private RenderingStrategy viewRenderer;
 
-  public StrategyView(RenderingStrategy viewRenderer)
-  {
-    this.viewRenderer = viewRenderer;
-  }
-
-  @Override
-  public String render(Map<String, List<String>> model)
-  {
-    try
+    public StrategyView(RenderingStrategy viewRenderer)
     {
-      return viewRenderer.renderView(model);
-    } catch (Exception e)
-    {
-      throw new RenderingException(e);
+        this.viewRenderer = viewRenderer;
     }
-  }
+
+    @Override
+    public String render(Map<String, List<String>> model)
+    {
+        try
+        {
+            return viewRenderer.renderView(model);
+        }
+        catch (Exception e)
+        {
+            throw new RenderingException(e);
+        }
+    }
 }

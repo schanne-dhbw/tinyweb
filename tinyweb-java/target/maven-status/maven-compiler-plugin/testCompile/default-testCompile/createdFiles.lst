@@ -1,3 +1,11 @@
-tinyweb\TinyWebViaPerlTest.class
-com\mblinn\oo\tinyweb\example\GreetingTest.class
-tinyweb\AppTest.class
+com\mblinn\mbfpp\oo\tinyweb\HttpRequestResponseTest.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\DummyController.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\ExceptionalController.class
+com\mblinn\mbfpp\oo\tinyweb\TemplateControllerTest.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\ExceptionalViewRenderer.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\ExceptionalView.class
+com\mblinn\mbfpp\oo\tinyweb\CommandViewTest.class
+com\mblinn\mbfpp\oo\tinyweb\ITestTinyweb.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\AddDummyHeaderFilter.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\DummyView.class
+com\mblinn\mbfpp\oo\tinyweb\stubs\DummyViewRenderer.class

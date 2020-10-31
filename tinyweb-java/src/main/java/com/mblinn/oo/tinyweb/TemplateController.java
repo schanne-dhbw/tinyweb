@@ -5,35 +5,38 @@ import java.util.Map;
 
 public abstract class TemplateController implements Controller
 {
-  private View view;
+    private View view;
 
-  public TemplateController(View view)
-  {
-    this.view = view;
-  }
-
-  public HttpResponse handleRequest(HttpRequest request)
-  {
-    Integer responseCode = 200;
-    String responseBody = "";
-    try
+    public TemplateController(View view)
     {
-      Map<String, List<String>> model = doRequest(request);
-      responseBody = view.render(model);
-    } catch (ControllerException e)
-    {
-      responseCode = e.getStatusCode();
-    } catch (RenderingException e)
-    {
-      responseCode = 500;
-      responseBody = "Exception while rendering.";
-    } catch (Exception e)
-    {
-      responseCode = 500;
+        this.view = view;
     }
-    return HttpResponse.Builder.newBuilder().body(responseBody)
-            .responseCode(responseCode).build();
-  }
 
-  protected abstract Map<String, List<String>> doRequest(HttpRequest request);
+    public HttpResponse handleRequest(HttpRequest request)
+    {
+        Integer responseCode = 200;
+        String responseBody = "";
+        try
+        {
+            Map<String, List<String>> model = doRequest(request);
+            responseBody = view.render(model);
+        }
+        catch (ControllerException e)
+        {
+            responseCode = e.getStatusCode();
+        }
+        catch (RenderingException e)
+        {
+            responseCode = 500;
+            responseBody = "Exception while rendering.";
+        }
+        catch (Exception e)
+        {
+            responseCode = 500;
+        }
+        return HttpResponse.Builder.newBuilder().body(responseBody)
+                .responseCode(responseCode).build();
+    }
+
+    protected abstract Map<String, List<String>> doRequest(HttpRequest request);
 }

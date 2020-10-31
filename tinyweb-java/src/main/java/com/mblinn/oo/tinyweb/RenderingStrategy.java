@@ -5,5 +5,5 @@ import java.util.Map;
 
 public interface RenderingStrategy
 {
-  public String renderView(Map<String, List<String>> model);
+    public String renderView(Map<String, List<String>> model);
 }

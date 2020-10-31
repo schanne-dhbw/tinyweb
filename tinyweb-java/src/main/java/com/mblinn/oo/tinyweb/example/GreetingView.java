@@ -4,8 +4,8 @@ import com.mblinn.oo.tinyweb.StrategyView;
 
 public class GreetingView extends StrategyView
 {
-  public GreetingView() 
-  {
-    super(new GreetingRenderingStrategy());
-  }  
+    public GreetingView()
+    {
+        super(new GreetingRenderingStrategy());
+    }
 }
