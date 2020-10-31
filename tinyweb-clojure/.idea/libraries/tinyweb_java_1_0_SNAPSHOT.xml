@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tinyweb-java-1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../tinyweb-java/target/tinyweb-java-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

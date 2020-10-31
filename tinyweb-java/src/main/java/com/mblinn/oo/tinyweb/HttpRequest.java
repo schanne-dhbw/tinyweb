@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class HttpRequest
 {
-    private final String path;
-    private final String body;
-    private final Map<String, String> headers;
+    private Map<String, String> headers;
+    private String body;
+    private String path;
 
     public Map<String, String> getHeaders()
     {

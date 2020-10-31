@@ -1,7 +1,10 @@
 (ns tinyweb.hello
-  (:gen-class))
+  (:gen-class)
+  (:use [mbfpp.oo.tinyweb.example]))
 
 (defn -main
-      "I don't do a whole lot ... yet."
+  "Main entry point."
   [& args]
-  (println "Hello, World!"))
+ ; (println "Hello, World!" (first args)))
+  (def request {:path "/greeting" :body (first args)})
+  (println (greeting-view (handle-greeting request))))
